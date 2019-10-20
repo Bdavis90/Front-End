@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import AxiosWithAuth from "./utils/AxiosWithAuth";
 import "./App.css";
 import PrivateRoute from "./utils/PrivateRoute";
-import Home from "./components/Home";
+import Home from "./Components/Home";
+import Navigation from "./Components/Navigation";
 
 function App(props) {
   console.log(props);
@@ -32,8 +33,9 @@ function App(props) {
 
   return (
     <div className="App">
-      <h1>My Top Nine</h1>
+      <Navigation />
       <PrivateRoute path="/home" component={Home} />
+      
     </div>
   );
 }
