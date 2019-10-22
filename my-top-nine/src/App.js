@@ -1,10 +1,42 @@
-import React from 'react';
-import './App.css';
+import React, { useEffect } from "react";
+import AxiosWithAuth from "./utils/AxiosWithAuth";
+import "./App.css";
+import PrivateRoute from "./utils/PrivateRoute";
+import Home from "./Components/Home";
+import Navigation from "./Components/Navigation";
+import FormikSignUpForm from "./Components/SignUp";
 
-function App() {
+function App(props) {
+  console.log(props);
+  useEffect(() => {
+    AxiosWithAuth()
+      .post("/auth/register", {
+        name: "Brandon Davis",
+        email: "abc123@abc.com",
+        password: "abc123"
+      })
+      .then(res => {
+        console.log(res);
+        // localStorage.setItem("token", res.data.token);
+      });
+  }, []);
+  useEffect(() => {
+    AxiosWithAuth()
+      .post("/auth/login", {
+        email: "abc123@abc.com",
+        password: "abc123"
+      })
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <h1>My Top Nine</h1>
+      <Navigation />
+      <PrivateRoute path="/home" component={Home} />
+      <FormikSignUpForm />
     </div>
   );
 }
