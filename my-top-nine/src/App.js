@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import AxiosWithAuth from "./utils/AxiosWithAuth";
 import "./App.css";
+import { Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
@@ -17,7 +18,6 @@ function App(props) {
       })
       .then(res => {
         console.log(res);
-        // localStorage.setItem("token", res.data.token);
       });
   }, []);
   useEffect(() => {
@@ -35,8 +35,8 @@ function App(props) {
   return (
     <div className="App">
       <Navigation />
+      <Route path="/signup" component={FormikSignUpForm} />
       <PrivateRoute path="/home" component={Home} />
-      {/* <FormikSignUpForm /> */}
     </div>
   );
 }
