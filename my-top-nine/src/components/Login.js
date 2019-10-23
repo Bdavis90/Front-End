@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from "./node_modules/formik";
 import * as Yup from "./node_modules/yup";
 import AxiosWithAuth from "./utils/AxiosWithAuth";
 
-function SignUp() {
+function Login() {
   useEffect(() => {
     AxiosWithAuth()
       .post("/auth/login", {
@@ -18,18 +18,16 @@ function SignUp() {
     return (
               <Form>
                 <Field type="text" name="email" placeholder="Email"/>
-                <Field type="text" name="name" placeholder="Name"/>
                 <Field type="text" name="password" placeholder="Password"/>
                 <button>Submit!</button>
               </Form>
     );
 }
 
-const FormikSignUpForm = withFormik({
-    mapPropsToValues({ email, name, password}) {
+const FormikLoginForm = withFormik({
+    mapPropsToValues({ email, password}) {
         return {
             email: this.displayName || "",
-            name: name || "",
             password: password || ""
         };
     },
@@ -38,9 +36,6 @@ const FormikSignUpForm = withFormik({
         email: Yup.string()
           .email()
           .required("Email is required"),
-        name: Yup.string()
-            .name()
-            .required("Name is required"),
         password: Yup.string()
           .min(6, "Password must be 6 chararcters or longer")
           .required("Password is required")
@@ -49,6 +44,6 @@ const FormikSignUpForm = withFormik({
         console.log(values);
         //THIS IS WHERE YOU DO YOUR FORM SUBMISSION CODE... HTTP REQUESTS, ETC.
       }
-    })(SignUp);
+    })(Login);
 
-export default FormikSignUpForm;
+export default FormikLoginForm;

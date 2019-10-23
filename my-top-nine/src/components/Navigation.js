@@ -1,6 +1,6 @@
-import React from "react";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import React from "./node_modules/react";
+import Nav from "./node_modules/react-bootstrap/Nav";
+import Navbar from "./node_modules/react-bootstrap/Navbar";
 // import Form from 'react-bootstrap/Form';
 // import Button from 'react-bootstrap/Button';
 
