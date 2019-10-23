@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import AxiosWithAuth from "./utils/AxiosWithAuth";
 import "./App.css";
 import PrivateRoute from "./utils/PrivateRoute";
-import Home from "./Components/Home";
-import Navigation from "./Components/Navigation";
-import FormikSignUpForm from "./Components/SignUp";
+import Home from "./components/Home";
+import Navigation from "./components/Navigation";
+import FormikSignUpForm from "./components/SignUp";
 
 function App(props) {
   console.log(props);
@@ -36,7 +36,7 @@ function App(props) {
     <div className="App">
       <Navigation />
       <PrivateRoute path="/home" component={Home} />
-      <FormikSignUpForm />
+      {/* <FormikSignUpForm /> */}
     </div>
   );
 }

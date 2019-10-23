@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
+import FormikTopNineForm from "./TopNine";
 
 const Home = props => {
   console.log("Home.js props: ", props);
@@ -14,9 +15,22 @@ const Home = props => {
         console.log(res.data);
         setHome(res.data);
         setTopNine(res.data.topNine);
+        return res.data.topNine.length > 9
+          ? null
+          : setTopNine(res.data.topNine);
       })
       .catch(err => console.error(err));
   }, []);
+
+  const deleteTopNine = item => {
+    console.log(item);
+    AxiosWithAuth()
+      .delete(`/home/${item.id}/delete-top-nine`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.error(err));
+  };
 
   const curDate = new Date().toDateString();
   console.log(curDate);
@@ -29,9 +43,13 @@ const Home = props => {
         <p>{curDate}</p>
         <p>Location: NJ</p>
       </div>
+      <FormikTopNineForm addTopNine={setTopNine} />
       <div className="topNine">
-        {topNine.map(item => (
-          <h2>{item.title}</h2>
+        {topNine.map(topNine => (
+          <div>
+            <h2>{topNine.title}</h2>
+            <button onClick={() => deleteTopNine(topNine)}>Delete</button>
+          </div>
         ))}
       </div>
     </>
