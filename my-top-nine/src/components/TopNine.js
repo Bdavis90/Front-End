@@ -1,7 +1,7 @@
-import React from "./node_modules/react";
-import { Form, Field, withFormik } from "./node_modules/formik";
+import React from "react";
+import { Form, Field, withFormik } from "formik";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
-import * as Yup from "./node_modules/yup";
+import * as Yup from "yup";
 
 const TopNine = () => {
   return (

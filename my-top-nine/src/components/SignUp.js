@@ -1,20 +1,10 @@
-import React, { useEffect } from './node_modules/react';
-import { withFormik, Form, Field } from "./node_modules/formik";
-import * as Yup from "./node_modules/yup";
-import AxiosWithAuth from "./utils/AxiosWithAuth";
+import React, { useEffect } from 'react';
+import { withFormik, Form, Field } from 'formik';
+import * as Yup from "yup";
+import AxiosWithAuth from "../utils/AxiosWithAuth";
 
 function SignUp() {
-  useEffect(() => {
-    AxiosWithAuth()
-      .post("/auth/login", {
-        email: "abc123@abc.com",
-        password: "abc123"
-      })
-      .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.token);
-      });
-  }, []);
+  
     return (
               <Form>
                 <Field type="text" name="email" placeholder="Email"/>
@@ -28,7 +18,7 @@ function SignUp() {
 const FormikSignUpForm = withFormik({
     mapPropsToValues({ email, name, password}) {
         return {
-            email: this.displayName || "",
+            email: email || "",
             name: name || "",
             password: password || ""
         };
@@ -39,7 +29,7 @@ const FormikSignUpForm = withFormik({
           .email()
           .required("Email is required"),
         name: Yup.string()
-            .name()
+            // .name()
             .required("Name is required"),
         password: Yup.string()
           .min(6, "Password must be 6 chararcters or longer")
@@ -47,7 +37,13 @@ const FormikSignUpForm = withFormik({
       }),
     handleSubmit(values) {
         console.log(values);
-        //THIS IS WHERE YOU DO YOUR FORM SUBMISSION CODE... HTTP REQUESTS, ETC.
+        
+          AxiosWithAuth()
+            .post("/auth/register", values)
+            .then(res => {
+              console.log(res);
+    
+            });
       }
     })(SignUp);
 

@@ -8,29 +8,18 @@ import FormikSignUpForm from "./components/SignUp";
 
 function App(props) {
   console.log(props);
-  useEffect(() => {
-    AxiosWithAuth()
-      .post("/auth/register", {
-        name: "Brandon Davis",
-        email: "abc123@abc.com",
-        password: "abc123"
-      })
-      .then(res => {
-        console.log(res);
-        // localStorage.setItem("token", res.data.token);
-      });
-  }, []);
-  useEffect(() => {
-    AxiosWithAuth()
-      .post("/auth/login", {
-        email: "abc123@abc.com",
-        password: "abc123"
-      })
-      .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.token);
-      });
-  }, []);
+
+  // useEffect(() => {
+  //   AxiosWithAuth()
+  //     .post("/auth/login", {
+  //       email: "abc123@abc.com",
+  //       password: "abc123"
+  //     })
+  //     .then(res => {
+  //       console.log(res);
+  //       localStorage.setItem("token", res.data.token);
+  //     });
+  // }, []);
 
   return (
     <div className="App">
