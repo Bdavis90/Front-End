@@ -1,12 +1,14 @@
-import React from 'react';
-import { withFormik, Form, Field } from "formik";
+import React, { useEffect } from 'react';
+import { withFormik, Form, Field } from 'formik';
 import * as Yup from "yup";
+import AxiosWithAuth from "../utils/AxiosWithAuth";
 
 function SignUp() {
+  
     return (
               <Form>
                 <Field type="text" name="email" placeholder="Email"/>
-                <Field type="text" name="username" placeholder="Username"/>
+                <Field type="text" name="name" placeholder="Name"/>
                 <Field type="text" name="password" placeholder="Password"/>
                 <button>Submit!</button>
               </Form>
@@ -14,10 +16,10 @@ function SignUp() {
 }
 
 const FormikSignUpForm = withFormik({
-    mapPropsToValues({ email, username, password}) {
+    mapPropsToValues({ email, name, password}) {
         return {
             email: email || "",
-            username: username || "",
+            name: name || "",
             password: password || ""
         };
     },
@@ -26,16 +28,22 @@ const FormikSignUpForm = withFormik({
         email: Yup.string()
           .email()
           .required("Email is required"),
-        username: Yup.string()
-            .min(6, "Username must be 6 characters or longer")
-            .required("Username is required"),
+        name: Yup.string()
+            // .name()
+            .required("Name is required"),
         password: Yup.string()
           .min(6, "Password must be 6 chararcters or longer")
           .required("Password is required")
       }),
     handleSubmit(values) {
         console.log(values);
-        //THIS IS WHERE YOU DO YOUR FORM SUBMISSION CODE... HTTP REQUESTS, ETC.
+        
+          AxiosWithAuth()
+            .post("/auth/register", values)
+            .then(res => {
+              console.log(res);
+    
+            });
       }
     })(SignUp);
 
