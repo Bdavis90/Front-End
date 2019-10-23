@@ -36,7 +36,7 @@ function App(props) {
     <div className="App">
       <Navigation />
       <PrivateRoute path="/home" component={Home} />
-      {/* <FormikSignUpForm /> */}
+      <FormikSignUpForm />
     </div>
   );
 }
