@@ -9,22 +9,12 @@ import FormikSignUpForm from "./components/SignUp";
 
 function App(props) {
   console.log(props);
-  useEffect(() => {
-    AxiosWithAuth()
-      .post("/auth/register", {
-        name: "Brandon Davis",
-        email: "abc123@abc.com",
-        password: "abc123"
-      })
-      .then(res => {
-        console.log(res);
-      });
-  }, []);
+
   useEffect(() => {
     AxiosWithAuth()
       .post("/auth/login", {
-        email: "abc123@abc.com",
-        password: "abc123"
+        email: "abc123@email.com",
+        password: "abc1234"
       })
       .then(res => {
         console.log(res);

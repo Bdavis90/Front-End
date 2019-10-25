@@ -15,6 +15,7 @@ const Home = props => {
   const [editing, setEditing] = useState(false);
   const [topNineEdit, setTopNineEdit] = useState(initialValue);
   console.log("home.js home: ", home);
+  console.log("topNine", topNine);
 
   useEffect(() => {
     AxiosWithAuth()
@@ -23,9 +24,7 @@ const Home = props => {
         console.log(res.data);
         setHome(res.data);
         setTopNine(res.data.topNine);
-        return res.data.topNine.length > 9
-          ? null
-          : setTopNine(res.data.topNine);
+        return res.data.topNine.length > 9 ? "" : setTopNine(res.data.topNine);
       })
       .catch(err => console.error(err));
   }, []);
@@ -47,7 +46,7 @@ const Home = props => {
   const saveEdit = e => {
     e.preventDefault();
     AxiosWithAuth()
-      .put(`/home/${editTopNine.id}/edit-top-nine`, editTopNine)
+      .put(`/home/${topNine.id}/edit-top-nine`, topNine)
       .then(res => {
         setEditing(false);
         console.log(res);
@@ -70,13 +69,13 @@ const Home = props => {
         <p>{curDate}</p>
         <p>Location: NJ</p>
       </div>
-      <FormikTopNineForm addTopNine={setTopNine} />
+      <FormikTopNineForm />
       <div className="topNine">
         {topNine.map(topNine => (
           <div>
             <h2>{topNine.title}</h2>
             <button onClick={() => deleteTopNine(topNine)}>Delete</button>
-            <button onClick={() => editTopNine(topNine)}>Edit</button>
+            <button onClick={() => editTopNine(topNine.id)}>Edit</button>
           </div>
         ))}
         {editing && (
