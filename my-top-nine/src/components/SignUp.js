@@ -29,7 +29,6 @@ const FormikSignUpForm = withFormik({
           .email()
           .required("Email is required"),
         name: Yup.string()
-            // .name()
             .required("Name is required"),
         password: Yup.string()
           .min(6, "Password must be 6 chararcters or longer")
@@ -37,12 +36,10 @@ const FormikSignUpForm = withFormik({
       }),
     handleSubmit(values) {
         console.log(values);
-        
           AxiosWithAuth()
             .post("/auth/register", values)
             .then(res => {
               console.log(res);
-    
             });
       }
     })(SignUp);
