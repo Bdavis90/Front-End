@@ -6,11 +6,20 @@ import AxiosWithAuth from "../utils/AxiosWithAuth";
 function Login() {
 
     return (
-              <Form>
-                <Field type="text" name="email" placeholder="Email"/>
-                <Field type="text" name="password" placeholder="Password"/>
-                <button>Submit!</button>
-              </Form>
+      <div>
+        <div>
+          <h3>Welcome back to My Top Nine</h3>
+        </div>
+        <Form>
+          <Field type="text" name="email" placeholder="Email"/>
+          <Field type="text" name="password" placeholder="Password"/>
+          <button>Submit!</button>
+        </Form>
+        <div>
+          <h4>Don't have an account? <a href="signup">Sign Up</a> Here!</h4>
+        </div>
+           
+      </div>
     );
 }
 
