@@ -9,13 +9,13 @@ function SignUp(props) {
   return (
     <div>
       <div>
-        <h3>Welcome to My Top Nine, Create your account here!</h3>
+        <h3>Welcome to My Top 9, Create your account here!</h3>
       </div>
       <Form>
         <Field type="text" name="email" placeholder="Email" />
         <Field type="text" name="name" placeholder="Name" />
-        <Field type="text" name="password" placeholder="Password" />
-        <button type="submit">Submit!</button>
+        <Field type="password" name="password" placeholder="Password" />
+        <button type="submit">Sign Up</button>
       </Form>
       <div>
         <h4>Already have an account? Click here to <a href="login">Login</a></h4>
