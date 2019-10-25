@@ -2,16 +2,25 @@ import React, { useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
+import {Link} from 'react-router-dom';
 
 function SignUp(props) {
   console.log(props);
   return (
-    <Form>
-      <Field type="text" name="email" placeholder="Email" />
-      <Field type="text" name="name" placeholder="Name" />
-      <Field type="text" name="password" placeholder="Password" />
-      <button type="submit">Submit!</button>
-    </Form>
+    <div>
+      <div>
+        <h3>Welcome to My Top Nine, Create your account here!</h3>
+      </div>
+      <Form>
+        <Field type="text" name="email" placeholder="Email" />
+        <Field type="text" name="name" placeholder="Name" />
+        <Field type="text" name="password" placeholder="Password" />
+        <button type="submit">Submit!</button>
+      </Form>
+      <div>
+        <h4>Already have an account? Click here to <a href="login">Login</a></h4>
+      </div>
+    </div>
   );
 }
 
@@ -34,7 +43,7 @@ const FormikSignUpForm = withFormik({
           .min(6, "Password must be 6 chararcters or longer")
           .required("Password is required")
       }),
-    handleSubmit(values) {
+    handleSubmit(values, props) {
         console.log(values);
           AxiosWithAuth()
             .post("/auth/register", values)

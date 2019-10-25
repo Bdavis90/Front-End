@@ -6,6 +6,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
 import FormikSignUpForm from "./components/SignUp";
+import FormikLoginForm from './components/Login';
 
 function App(props) {
   console.log(props);
@@ -13,7 +14,8 @@ function App(props) {
   return (
     <div className="App">
       <Navigation />
-      <Route path="/signup" component={FormikSignUpForm} />
+      <Route exact path="/signup" component={FormikSignUpForm} />
+      <Route exact path="/login" component={FormikLoginForm} />
       <PrivateRoute path="/home" component={Home} />
     </div>
   );
