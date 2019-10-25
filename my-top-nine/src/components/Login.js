@@ -39,14 +39,14 @@ const FormikLoginForm = withFormik({
           .min(6, "Password must be 6 chararcters or longer")
           .required("Password is required")
       }),
-    handleSubmit(values, props) {
+    handleSubmit(values, ...props) {
         console.log(values);
           AxiosWithAuth()
             .post("/auth/login", values)
             .then(res => {
               console.log(res);
               localStorage.setItem("token", res.data.token);
-              this.props.history.push('/home');
+              props.history.push('/home');
             });
       }
     })(Login);
