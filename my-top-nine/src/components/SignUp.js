@@ -1,29 +1,29 @@
-import React, { useEffect } from 'react';
-import { withFormik, Form, Field } from 'formik';
+import React, { useEffect } from "react";
+import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 
-function SignUp() {
-  
-    return (
-              <Form>
-                <Field type="text" name="email" placeholder="Email"/>
-                <Field type="text" name="name" placeholder="Name"/>
-                <Field type="text" name="password" placeholder="Password"/>
-                <button>Submit!</button>
-              </Form>
-    );
+function SignUp(props) {
+  console.log(props);
+  return (
+    <Form>
+      <Field type="text" name="email" placeholder="Email" />
+      <Field type="text" name="name" placeholder="Name" />
+      <Field type="text" name="password" placeholder="Password" />
+      <button type="submit">Submit!</button>
+    </Form>
+  );
 }
 
 const FormikSignUpForm = withFormik({
-    mapPropsToValues({ email, name, password}) {
-        return {
-            email: email || "",
-            name: name || "",
-            password: password || ""
-        };
-    },
-
+  mapPropsToValues({ email, name, password }) {
+    return {
+      email: email || "",
+      name: name || "",
+      password: password || ""
+    };
+  },
+  
     validationSchema: Yup.object().shape({
         email: Yup.string()
           .email()
