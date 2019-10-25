@@ -12,8 +12,8 @@ function Login() {
         </div>
         <Form>
           <Field type="text" name="email" placeholder="Email"/>
-          <Field type="text" name="password" placeholder="Password"/>
-          <button>Submit!</button>
+          <Field type="password" name="password" placeholder="Password"/>
+          <button>Login</button>
         </Form>
         <div>
           <h4>Don't have an account? <a href="signup">Sign Up</a> Here!</h4>
@@ -46,6 +46,7 @@ const FormikLoginForm = withFormik({
             .then(res => {
               console.log(res);
               localStorage.setItem("token", res.data.token);
+              this.props.history.push('/home');
             });
       }
     })(Login);

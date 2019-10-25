@@ -8,7 +8,7 @@ import Navbar from "react-bootstrap/Navbar";
 const Navigation = () => {
   return (
     <div>
-    <h1>My Top Nine</h1>
+    <h1>My Top 9</h1>
     <NavLink to="/signup">Sign Up</NavLink>
     <NavLink to="/login">Log In</NavLink>
     </div>
