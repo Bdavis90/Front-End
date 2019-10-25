@@ -30,7 +30,7 @@ const FormikLoginForm = withFormik({
           .min(6, "Password must be 6 chararcters or longer")
           .required("Password is required")
       }),
-    handleSubmit(values) {
+    handleSubmit(values, props) {
         console.log(values);
           AxiosWithAuth()
             .post("/auth/login", values)
