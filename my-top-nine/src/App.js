@@ -10,18 +10,6 @@ import FormikSignUpForm from "./components/SignUp";
 function App(props) {
   console.log(props);
 
-  useEffect(() => {
-    AxiosWithAuth()
-      .post("/auth/login", {
-        email: "abc123@email.com",
-        password: "abc1234"
-      })
-      .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.token);
-      });
-  }, []);
-
   return (
     <div className="App">
       <Navigation />

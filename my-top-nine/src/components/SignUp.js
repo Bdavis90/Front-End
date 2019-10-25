@@ -23,27 +23,25 @@ const FormikSignUpForm = withFormik({
       password: password || ""
     };
   },
-
-  validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email()
-      .required("Email is required"),
-    name: Yup.string()
-      // .name()
-      .required("Name is required"),
-    password: Yup.string()
-      .min(6, "Password must be 6 chararcters or longer")
-      .required("Password is required")
-  }),
-  handleSubmit(values, props) {
-    console.log(values);
-
-    AxiosWithAuth()
-      .post("/auth/register", values)
-      .then(res => {
-        console.log(res);
-      });
-  }
-})(SignUp);
+  
+    validationSchema: Yup.object().shape({
+        email: Yup.string()
+          .email()
+          .required("Email is required"),
+        name: Yup.string()
+            .required("Name is required"),
+        password: Yup.string()
+          .min(6, "Password must be 6 chararcters or longer")
+          .required("Password is required")
+      }),
+    handleSubmit(values) {
+        console.log(values);
+          AxiosWithAuth()
+            .post("/auth/register", values)
+            .then(res => {
+              console.log(res);
+            });
+      }
+    })(SignUp);
 
 export default FormikSignUpForm;
