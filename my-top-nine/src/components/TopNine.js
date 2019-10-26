@@ -5,12 +5,15 @@ import * as Yup from "yup";
 
 const TopNine = () => {
   return (
-    <Form>
-      <Field type="text" name="title" placeholder="Title" />
-      <Field type="text" name="description" placeholder="Description" />
-      <Field type="text" name="image_url" placeholder="Image" />
-      <button type="submit">Submit</button>
-    </Form>
+    <>
+      <Form className="topNineForm">
+        <p>Add a Top Nine</p>
+        <Field type="text" name="title" placeholder="Title" />
+        <Field type="text" name="description" placeholder="Description" />
+        <Field type="text" name="image_url" placeholder="Image" />
+        <button type="submit">Submit</button>
+      </Form>
+    </>
   );
 };
 
@@ -28,15 +31,15 @@ const FormikTopNineForm = withFormik({
     description: Yup.string().required(),
     image_url: Yup.string()
   }),
-  handleSubmit(values) {
+  handleSubmit(values, { resetForm }) {
     console.log(values);
     AxiosWithAuth()
       .post(`/home/add-top-nine`, values)
       .then(res => {
         console.log(res.data);
-        localStorage.setItem("topNineId", res.data.id);
       })
       .catch(err => console.error(err));
+    resetForm();
   }
 })(TopNine);
 

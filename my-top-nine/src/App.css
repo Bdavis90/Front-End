@@ -7,7 +7,6 @@
   display: flex;
   justify-content: flex-end;
   padding-bottom: 15px;
-  margin-bottom: 15px;
 }
 
 .form {
@@ -17,3 +16,71 @@
   align-items: center;
 }
 
+.home {
+  background: linear-gradient(#38b6ff, #ffde59);
+  height: 100vh;
+}
+
+.user {
+  padding-top: 90px;
+}
+
+.topNineList {
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  position: relative;
+  width: 900px;
+}
+
+.topNineForm {
+  margin-top: 30px;
+}
+
+.topNineForm button {
+  background-color: #17a2b8;
+  color: white;
+  border-radius: 5px;
+  border-color: #17a2b8;
+}
+
+.topNineForm p {
+  font-size: 50px;
+}
+
+.topNine {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 10px 0;
+  margin: auto;
+}
+
+.topNine button {
+  background-color: #17a2b8;
+  color: white;
+  border-radius: 5px;
+  border-color: #17a2b8;
+  margin-left: 2px;
+}
+
+.editForm {
+  position: absolute;
+  top: 440px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+}
+
+.editForm input {
+  width: 100px;
+}
+
+.editForm button {
+  background-color: #17a2b8;
+  color: white;
+  border-radius: 5px;
+  border-color: #17a2b8;
+  margin-left: 2px;
+}

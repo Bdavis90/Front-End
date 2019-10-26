@@ -43,19 +43,21 @@ const Home = props => {
     setEditing(true);
     setTopNineEdit(item);
   };
-  const saveEdit = e => {
-    e.preventDefault();
-    AxiosWithAuth()
-      .put(`/home/${topNine.id}/edit-top-nine`, topNine)
-      .then(res => {
-        setEditing(false);
-        console.log(res);
-      })
-      .catch(err => console.error(err));
-  };
 
   const handleChange = e => {
     setTopNineEdit({ ...topNineEdit, [e.target.name]: e.target.value });
+  };
+
+  const saveEdit = e => {
+    e.preventDefault();
+    AxiosWithAuth()
+      .put(`/home/${topNineEdit.id}/edit-top-nine`, topNineEdit)
+      .then(res => {
+        setEditing(false);
+        e.target.reset();
+        console.log(res);
+      })
+      .catch(err => console.error(err));
   };
 
   const curDate = new Date().toDateString();
@@ -63,47 +65,44 @@ const Home = props => {
   console.log(topNine);
 
   return (
-    <>
+    <div className="home">
       <div className="user">
-        <h2>{home.name}</h2>
+        <h2>Welcome {home.name}</h2>
         <p>{curDate}</p>
-        <p>Location: NJ</p>
       </div>
       <FormikTopNineForm />
-      <div className="topNine">
+      <div className="topNineList">
         {topNine.map(topNine => (
-          <div>
+          <div className="topNine">
             <h2>{topNine.title}</h2>
-            <button onClick={() => deleteTopNine(topNine)}>Delete</button>
-            <button onClick={() => editTopNine(topNine.id)}>Edit</button>
+            <p>{topNine.description}</p>
+            <img src={topNine.image_url} />
+            <div>
+              <button onClick={() => deleteTopNine(topNine)}>Delete</button>
+              <button onClick={() => editTopNine(topNine)}>Edit</button>
+            </div>
           </div>
         ))}
         {editing && (
-          <form onSubmit={saveEdit}>
-            <label>
-              Title
-              <input
-                name="title"
-                onChange={handleChange}
-                value={topNineEdit.title}
-              />
-            </label>
-            <label>
-              Description
-              <input
-                name="descriptionj"
-                onChange={handleChange}
-                value={topNineEdit.description}
-              />
-            </label>
-            <label>
-              image_url
-              <input
-                name="image_url"
-                onChange={handleChange}
-                value={topNineEdit.image_url}
-              />
-            </label>
+          <form onSubmit={saveEdit} className="editForm">
+            <input
+              name="title"
+              placeholder="Title"
+              onChange={handleChange}
+              value={topNineEdit.title}
+            />
+            <input
+              name="description"
+              placeholder="Description"
+              onChange={handleChange}
+              value={topNineEdit.description}
+            />
+            <input
+              name="image_url"
+              placeholder="image_url"
+              onChange={handleChange}
+              value={topNineEdit.image_url}
+            />
             <div>
               <button type="submit">save</button>
               <button onClick={() => setEditing(false)}>cancel</button>
@@ -111,7 +110,7 @@ const Home = props => {
           </form>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
