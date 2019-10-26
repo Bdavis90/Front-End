@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import AxiosWithAuth from "./utils/AxiosWithAuth";
+import React from "react";
 import "./App.css";
 import { Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
@@ -13,9 +12,9 @@ function App(props) {
 
   return (
     <div className="App">
-      <Navigation />
-      <Route exact path="/signup" component={FormikSignUpForm} />
-      <Route exact path="/login" component={FormikLoginForm} />
+      <Route path="/" component={Navigation} />
+      <Route path="/signup" component={FormikSignUpForm} />
+      <Route  path="/login" component={FormikLoginForm} />
       <PrivateRoute path="/home" component={Home} />
     </div>
   );

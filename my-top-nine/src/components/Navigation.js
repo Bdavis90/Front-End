@@ -2,30 +2,20 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-// import Form from 'react-bootstrap/Form';
-// import Button from 'react-bootstrap/Button';
+import {Form, FormControl} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 const Navigation = () => {
   return (
-    <div>
-    <h1>My Top 9</h1>
-    <NavLink to="/signup">Sign Up</NavLink>
-    <NavLink to="/login">Log In</NavLink>
-    </div>
-    // <Navbar bg="light" expand="lg">
-    //   <Navbar.Brand inline href="#home">
-    //     My Top Nine
-    //   </Navbar.Brand>
-    //   <Nav className="mr-auto" inline>
-    //     <Nav.Link href="#home">Home</Nav.Link>
-    //     <Nav.Link href="#signup">Sign Up</Nav.Link>
-    //     <Nav.Link href="#login">Log In</Nav.Link>
-    //   </Nav>
-    //   {/* <Form inline>
-    //     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-    //     <Button variant="outline-success">Search</Button>
-    //     </Form> */}
-    // </Navbar>
+    <Navbar class="navbar" expand="lg">
+      <Navbar.Brand inline>
+        My Top Nine
+      </Navbar.Brand>
+      <Nav inline>
+        <Nav.Link href="/signup">Sign Up</Nav.Link>
+        <Nav.Link href="/login">Log In</Nav.Link>
+      </Nav>
+    </Navbar>
   );
 };
 

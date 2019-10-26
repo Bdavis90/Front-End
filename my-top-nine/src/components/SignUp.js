@@ -3,6 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 import {Link} from 'react-router-dom';
+import {Button, FormGroup, Label, Input, FormText} from 'reactstrap';
 
 function SignUp(props) {
   console.log(props);
@@ -11,11 +12,21 @@ function SignUp(props) {
       <div>
         <h3>Welcome to My Top 9, Create your account here!</h3>
       </div>
-      <Form>
-        <Field type="text" name="email" placeholder="Email" />
-        <Field type="text" name="name" placeholder="Name" />
-        <Field type="password" name="password" placeholder="Password" />
-        <button type="submit">Sign Up</button>
+      <Form class="form">
+        <FormGroup>
+          <Label for="Email">Email</Label>
+          <Input type="email" name="email" id="Email" placeholder="Email" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="Name">Name</Label>
+          <Input type="text" name="name" id="Name" placeholder="Name" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="Password">Password</Label>
+          <Input type="password" name="password" id="Password" placeholder="Password" />
+        </FormGroup>
+       
+        <Button color="info" type="submit">Sign Up</Button>
       </Form>
       <div>
         <h4>Already have an account? Click here to <a href="login">Login</a></h4>
